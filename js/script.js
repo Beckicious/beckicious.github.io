@@ -148,7 +148,8 @@ function addStream(channelName, top, left, height, width, z) {
 			setPath();
 		}
 	});
-	$("#field" + i + "d").css({top: top, left:left, zIndex:z});
+	$("#field" + i + "d").css({top: top, left:left});
+	putToFront($("#field" + i + "d"));
 	hideFrame("#field" + i + "d");
 	i = i+1;
 
@@ -214,7 +215,8 @@ function addChat(channelName, top, left, height, width, z) {
 		},
 		handles:'n, e, s, w, ne, se, sw, nw'
 	});
-	$("#field" + i + "d").css({top: top, left:left, zIndex:z});
+	$("#field" + i + "d").css({top: top, left:left});
+	putToFront($("#field" + i + "d"));
 	hideFrame("#field" + i + "d");
 	i = i+1;
 
