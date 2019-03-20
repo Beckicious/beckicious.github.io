@@ -16,7 +16,11 @@ $(document).ready(function() {
 	var colWindowEdge = document.getElementById('colWindowEdge');
 	colWindowEdge.addEventListener("change", colWindowEdgeChange, false);
 
-	console.log(window.location.pathname);
+	var url = window.location.href;
+	var param = url.split('?')[1];
+	if (param) {
+		console.log(param.split('&'));
+	}
 });
 
 function colBackgroundChange(event) {
