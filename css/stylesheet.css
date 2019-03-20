@@ -1,0 +1,98 @@
+body {
+	background: #19171C;
+}
+
+#butAddChannel {
+	position: absolute;
+	height: 30;
+	width: 80;
+	top:10;
+	left: 120;
+}
+#butAddChat {
+	position: absolute;
+	height: 30;
+	width: 80;
+	top:10;
+	left: 210;
+}
+#colBackground {
+	position: absolute;
+	height: 30;
+	width: 80;
+	top:10;
+	left: 300;
+}
+#colWindowEdge {
+	position: absolute;
+	height: 30;
+	width: 80;
+	top:10;
+	left: 390;
+}
+
+#name {
+	position: absolute;
+	height: 30;
+	width: 100;
+	top:10;
+	left:10;
+}
+
+.frame {
+	position: fixed;
+	top: 50;
+	left: 10;
+	background-color: #4B367C;
+	transition: all 0s linear;
+}
+
+.labelChannelName {
+	font-family: arial;
+	font-size: 15;
+	margin-top: 5;
+	margin-left: 5;
+	color: white;
+	text-shadow:
+    -1px -1px 0 #000,
+     0   -1px 0 #000,
+     1px -1px 0 #000,
+     1px  0   0 #000,
+     1px  1px 0 #000,
+     0    1px 0 #000,
+    -1px  1px 0 #000,
+    -1px  0   0 #000;
+}
+
+.iframeShield {
+	background-color: white;
+	position: absolute;
+	z-index: 10000;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.twitchfield {
+	position: absolute;
+	left: 25px;
+	top: 25px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+}
+
+.end {
+	position: absolute;
+	height: 25px;
+	width: 25px;
+	top: 0;
+	left: 50;
+	
+	background-color: red;
+	border-style: none;
+	font-family: arial;
+}

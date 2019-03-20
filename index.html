@@ -1,9 +1,20 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>TwitchWatcher</title>
+		<title>TwitchWatcher3000</title>
+		<script type="text/javascript" src="lib/external/jquery/jquery.js"></script>
+		<script type="text/javascript" src="lib/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+		<link rel="stylesheet" type="text/css" href="lib/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 	</head>
 	<body id="inner">
-		<label>test<label>
+		<div>
+			<input id="name" placeholder="channel name"/>
+			<button id="butAddChannel" onclick="addChannel()">Channel</button>
+			<button id="butAddChat" onclick="addChat()">Chat</button>
+			<input type="color" id="colBackground" value=#19171C>
+			<input type="color" id="colWindowEdge" value=#4B367C>
+		</div>
 	</body>
 </html>
