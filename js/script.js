@@ -99,6 +99,7 @@ function addStreamFromButton() {
 	var topZ = topZ + 1;
 
 	addStream(channelName, top, left, height, width, topZ);
+	putToFront($("#field" + i-1 + "d"));
 }
 
 function addStream(channelName, top, left, height, width, z) {
@@ -149,7 +150,6 @@ function addStream(channelName, top, left, height, width, z) {
 		}
 	});
 	$("#field" + i + "d").css({top: top, left:left});
-	putToFront($("#field" + i + "d"));
 	hideFrame("#field" + i + "d");
 	i = i+1;
 
@@ -165,6 +165,7 @@ function addChatFromButton() {
 	var topZ = topZ + 1;
 
 	addChat(channelName, top, left, height, width, topZ);
+	putToFront($("#field" + i-1 + "d"));
 }
 
 function addChat(channelName, top, left, height, width, z) {	
@@ -216,7 +217,6 @@ function addChat(channelName, top, left, height, width, z) {
 		handles:'n, e, s, w, ne, se, sw, nw'
 	});
 	$("#field" + i + "d").css({top: top, left:left});
-	putToFront($("#field" + i + "d"));
 	hideFrame("#field" + i + "d");
 	i = i+1;
 
