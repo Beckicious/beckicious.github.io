@@ -19,25 +19,75 @@ $(document).ready(function() {
 	var url = window.location.href;
 	var param = url.split('?')[1];
 	if (param) {
-		console.log(param.split('&'));
+		createFromParam(param);
 	}
 });
 
+function createFromParam(param) {
+	var splitted = param.split('&');
+	var colBG = splitted[0].split('=')[1];
+	var colWE = splitted[1].split('=')[1];
+	var streams = splitted[2].split('=')[1];
+	var chats = splitted[3].split('=')[1];
+
+	//background color
+	$('#colBackground').val(colBG);
+	var style = $('<style>#inner { background-color: ' + colBG + '; }</style>');
+	$('html > head').append(style);
+
+	//window edge color
+	$('#colWindowEdge').val(colWE);
+	var style = $('<style>.frame { background-color: ' + colWE + '; }</style>');
+	$('html > head').append(style);
+
+	//streams
+	if (streams) {
+		streams.split('_').forEach(function(stream) {
+			if (stream) {
+				var streamsplitted = stream.split('-');
+				var channelName = streamsplitted[0];
+				var top = streamsplitted[1];
+				var left = streamsplitted[2];
+				var height = streamsplitted[3];
+				var width = streamsplitted[4];
+				var z = streamsplitted[5];
+				addStream(channelName,top,left,height,width,z);
+			}
+		});	
+	}
+
+	//chats
+	if (chats) {
+		chats.split('_').forEach(function(chat) {
+			if (chat) {
+				var chatsplitted = chat.split('-');
+				var channelName = chatsplitted[0];
+				var top = chatsplitted[1];
+				var left = chatsplitted[2];
+				var height = chatsplitted[3];
+				var width = chatsplitted[4];
+				var z = chatsplitted[5];
+				addChat(channelName,top,left,height,width,z);
+			}
+		});	
+	}
+}
+
 function colBackgroundChange(event) {
-	//$('#inner').css('background-color', event.target.value);
 	var style = $('<style>#inner { background-color: '+event.target.value+'; }</style>');
 	$('html > head').append(style);
+	setPath();
 }
 function colWindowEdgeChange(event) {
-	//$('#inner').find('.frame').css('background-color', event.target.value);
 	var style = $('<style>.frame { background-color: '+event.target.value+'; }</style>');
 	$('html > head').append(style);
+	setPath();
 }
 
 function addStreamFromButton() {
 	var channelName = $("#name").val();
-	var top = '50px';
-	var left = '10px';
+	var top = '50';
+	var left = '10';
 	var height = 400
 	var width = height * 1.64;
 
@@ -45,8 +95,8 @@ function addStreamFromButton() {
 }
 
 function addStream(channelName, top, left, height, width) {
-	var frameheight = height + frameOffset;
-	var framewidth = width + frameOffset;
+	var frameheight = parseInt(height) + frameOffset;
+	var framewidth = parseInt(width) + frameOffset;
 	
 	var buttonpos = width + buttonOffset;
 	
@@ -94,7 +144,7 @@ function addStream(channelName, top, left, height, width) {
 	i = i+1;
 	topZ = topZ + 1;
 
-	createPath();
+	setPath();
 }
 
 function addChatFromButton() {
@@ -159,11 +209,15 @@ function addChat(channelName, top, left, height, width) {
 	$("#field" + i + "d").css({top: top, left:left});
 	i = i+1;
 	topZ = topZ + 1;
+
+	setPath();
 }
 
 function putToFront(ele) {
 	$(ele).css("z-index", topZ);
 	topZ = topZ + 1;
+
+	setPath();
 }
 
 function showFrame(ele) {
@@ -188,6 +242,7 @@ function hideFrame(ele) {
 
 function removeElement(ele) {
 	$(ele).parent().remove();
+	setPath();
 }
 
 function resize(ele) {
@@ -196,9 +251,10 @@ function resize(ele) {
 	var butpos = width+29;
 	$(ele).find("iframe").css({"height":height, "width": width});
 	$(ele).find("button").css("left",butpos);
+	setPath();
 }
 
-function createPath() {
+function setPath() {
 	var path = '//' + window.location.hostname + '/?';
 	path += 'colBG=' + $('#colBackground')[0].value + '&';
 	path += 'colWE=' + $('#colWindowEdge')[0].value + '&';
@@ -210,8 +266,19 @@ function createPath() {
 		var height = $(this).height() - frameOffset;
 		var width = $(this).width() - frameOffset;
 		var z = $(this)[0].style.zIndex;
-		var pathPart = channel + '-' + top + '-' + left + '-' + height + '-' + width + '-' + z;
+		var pathPart = channel + '-' + top + '-' + left + '-' + height + '-' + width + '-' + z + '_';
 		path += pathPart + ';';
 	});
-	//window.history.replaceState(null,null, path);
+	path += '&chats=';
+	$('#inner').find('.chat').each(function() {
+		var channel = $(this).find('label')[0].innerHTML;
+		var top = $(this).position().top;
+		var left = $(this).position().left;
+		var height = $(this).height() - frameOffset;
+		var width = $(this).width() - frameOffset;
+		var z = $(this)[0].style.zIndex;
+		var pathPart = channel + '-' + top + '-' + left + '-' + height + '-' + width + '-' + z + '_';
+		path += pathPart + ';';
+	});
+	window.history.replaceState(null,null, path);
 }
