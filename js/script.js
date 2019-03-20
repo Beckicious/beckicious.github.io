@@ -159,6 +159,9 @@ function addChatFromButton() {
 }
 
 function addChat(channelName, top, left, height, width, z) {
+
+	console.log(top);
+	console.log(left);
 	
 	var frameheight = parseInt(height) + frameOffset;
 	var framewidth = parseInt(width) + frameOffset;
