@@ -213,5 +213,5 @@ function createPath() {
 		var pathPart = channel + '-' + top + '-' + left + '-' + height + '-' + width + '-' + z;
 		path += pathPart + ';';
 	});
-	window.history.replaceState(null,null, path);
+	//window.history.replaceState(null,null, path);
 }
