@@ -267,7 +267,7 @@ function setPath() {
 		var width = $(this).width() - frameOffset;
 		var z = $(this)[0].style.zIndex;
 		var pathPart = channel + '-' + top + '-' + left + '-' + height + '-' + width + '-' + z + '_';
-		path += pathPart + ';';
+		path += pathPart;
 	});
 	path += '&chats=';
 	$('#inner').find('.chat').each(function() {
@@ -278,7 +278,7 @@ function setPath() {
 		var width = $(this).width() - frameOffset;
 		var z = $(this)[0].style.zIndex;
 		var pathPart = channel + '-' + top + '-' + left + '-' + height + '-' + width + '-' + z + '_';
-		path += pathPart + ';';
+		path += pathPart;
 	});
 	window.history.replaceState(null,null, path);
 }
