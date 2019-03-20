@@ -126,18 +126,20 @@ function addStream(channelName, top, left, height, width, z) {
 	`);
 	$("#field" + i + "d").draggable({
 		start: function () {
-			$(".iframeShield").css('visibility', 'visible')
+			$(".iframeShield").css('visibility', 'visible');
 		},
 		stop: function () {
-			$(".iframeShield").css('visibility', 'hidden')
+			$(".iframeShield").css('visibility', 'hidden');
+			setPath();
 		}
 	});
 	$("#field" + i + "d").resizable({
 		start: function () {
-			$(".iframeShield").css('visibility', 'visible')
+			$(".iframeShield").css('visibility', 'visible');
 		},
 		stop: function () {
-			$(".iframeShield").css('visibility', 'hidden')
+			$(".iframeShield").css('visibility', 'hidden');
+			setPath();
 		}
 	});
 	$("#field" + i + "d").css({top: top, left:left});
@@ -158,11 +160,7 @@ function addChatFromButton() {
 	addChat(channelName, top, left, height, width, topZ);
 }
 
-function addChat(channelName, top, left, height, width, z) {
-
-	console.log(top);
-	console.log(left);
-	
+function addChat(channelName, top, left, height, width, z) {	
 	var frameheight = parseInt(height) + frameOffset;
 	var framewidth = parseInt(width) + frameOffset;
 	
@@ -193,18 +191,20 @@ function addChat(channelName, top, left, height, width, z) {
 	`);
 	$("#field" + i + "d").draggable({
 		start: function () {
-			$(".iframeShield").css('visibility', 'visible')
+			$(".iframeShield").css('visibility', 'visible');
 		},
 		stop: function () {
-			$(".iframeShield").css('visibility', 'hidden')
+			$(".iframeShield").css('visibility', 'hidden');
+			setPath();
 		}
 	});
 	$("#field" + i + "d").resizable({
 		start: function () {
-			$(".iframeShield").css('visibility', 'visible')
+			$(".iframeShield").css('visibility', 'visible');
 		},
 		stop: function () {
-			$(".iframeShield").css('visibility', 'hidden')
+			$(".iframeShield").css('visibility', 'hidden');
+			setPath();
 		},
 		handles:'n, e, s, w, ne, se, sw, nw'
 	});
@@ -248,9 +248,9 @@ function removeElement(ele) {
 }
 
 function resize(ele) {
-	var height = $(ele).height() - 54;
-	var width = $(ele).width() - 54;
-	var butpos = width+29;
+	var height = $(ele).height() - frameOffset;
+	var width = $(ele).width() - frameOffset;
+	var butpos = width + buttonOffset;
 	$(ele).find("iframe").css({"height":height, "width": width});
 	$(ele).find("button").css("left",butpos);
 	setPath();
