@@ -140,8 +140,8 @@ function addStream(channelName, top, left, height, width, z) {
 			$(".iframeShield").css('visibility', 'hidden')
 		}
 	});
-	hideFrame("#field" + i + "d");
 	$("#field" + i + "d").css({top: top, left:left});
+	hideFrame("#field" + i + "d");
 	i = i+1;
 
 	setPath();
@@ -160,8 +160,8 @@ function addChatFromButton() {
 
 function addChat(channelName, top, left, height, width, z) {
 	
-	var frameheight = height + frameOffset;
-	var framewidth = width + frameOffset;
+	var frameheight = parseInt(height) + frameOffset;
+	var framewidth = parseInt(width) + frameOffset;
 	
 	var buttonpos = width + buttonOffset;
 	
@@ -205,8 +205,8 @@ function addChat(channelName, top, left, height, width, z) {
 		},
 		handles:'n, e, s, w, ne, se, sw, nw'
 	});
-	hideFrame("#field" + i + "d");
 	$("#field" + i + "d").css({top: top, left:left});
+	hideFrame("#field" + i + "d");
 	i = i+1;
 
 	setPath();
