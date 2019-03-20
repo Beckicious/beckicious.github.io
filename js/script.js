@@ -16,6 +16,7 @@ $(document).ready(function() {
 	var colWindowEdge = document.getElementById('colWindowEdge');
 	colWindowEdge.addEventListener("change", colWindowEdgeChange, false);
 
+	console.log(window.location.pathname);
 });
 
 function colBackgroundChange(event) {
@@ -208,6 +209,5 @@ function createPath() {
 		var pathPart = channel + '-' + top + '-' + left + '-' + height + '-' + width + '-' + z;
 		path += pathPart + ';';
 	});
-	console.log(path);
-	window.history.pushState(null,null, path);
+	window.history.replaceState(null,null, path);
 }
