@@ -194,7 +194,7 @@ function resize(ele) {
 }
 
 function createPath() {
-	var path = '/?';
+	var path = '//' + window.location.hostname + '/?';
 	path += 'colBG=' + $('#colBackground')[0].value + '&';
 	path += 'colWE=' + $('#colWindowEdge')[0].value + '&';
 	path += 'streams=';
@@ -209,5 +209,5 @@ function createPath() {
 		path += pathPart + ';';
 	});
 	console.log(path);
-	history.replaceState(null,null, window.location.pathname + path)	
+	window.history.pushState(null,null, path);
 }
