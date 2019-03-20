@@ -1,5 +1,7 @@
 var i = 0;
 var topZ = 0;
+var frameOffset = 54;
+var buttonOffset = 29;
 
 $(document).ready(function() {
 	
@@ -27,20 +29,25 @@ function colWindowEdgeChange(event) {
 	$('html > head').append(style);
 }
 
-function addChannel() {
-	
+function addStreamFromButton() {
 	var channelName = $("#name").val();
-	var height = 400;
+	var top = '50px';
+	var left = '10px';
+	var height = 400
 	var width = height * 1.64;
+
+	addStream(channelName, top, left, height, width);
+}
+
+function addStream(channelName, top, left, height, width) {
+	var frameheight = height + frameOffset;
+	var framewidth = width + frameOffset;
 	
-	var frameheight = height + 54;
-	var framewidth = width + 54;
-	
-	var buttonpos = width + 29;
+	var buttonpos = width + buttonOffset;
 	
 	$("#inner").append(`
 		<div id='field` + i + `d' 
-			 class='frame' 
+			 class='frame stream' 
 			 style='height:` + frameheight + `; 
 				width:` + framewidth + `; 
 				z-index:` + topZ + `'
@@ -78,24 +85,33 @@ function addChannel() {
 		}
 	});
 	hideFrame("#field" + i + "d");
+	$("#field" + i + "d").css({top: top, left:left});
 	i = i+1;
 	topZ = topZ + 1;
+
+	createPath();
 }
 
-function addChat() {
-	
+function addChatFromButton() {
 	var channelName = $("#name").val();
+	var top = '50px';
+	var left = '10px';
 	var height = 400
 	var width = height * 0.7;
+
+	addChat(channelName, top, left, height, width);
+}
+
+function addChat(channelName, top, left, height, width) {
 	
-	var frameheight = height + 54;
-	var framewidth = width + 54;
+	var frameheight = height + frameOffset;
+	var framewidth = width + frameOffset;
 	
-	var buttonpos = width + 29;
+	var buttonpos = width + buttonOffset;
 	
 	$("#inner").append(`
 		<div id='field` + i + `d' 
-			class='frame' 
+			class='frame chat' 
 			style='height:` + frameheight + `; 
 				width:` + framewidth + `; 
 				z-index:` + topZ + `'
@@ -135,6 +151,7 @@ function addChat() {
 		handles:'n, e, s, w, ne, se, sw, nw'
 	});
 	hideFrame("#field" + i + "d");
+	$("#field" + i + "d").css({top: top, left:left});
 	i = i+1;
 	topZ = topZ + 1;
 }
@@ -174,4 +191,23 @@ function resize(ele) {
 	var butpos = width+29;
 	$(ele).find("iframe").css({"height":height, "width": width});
 	$(ele).find("button").css("left",butpos);
+}
+
+function createPath() {
+	var path = '/?';
+	path += 'colBG=' + $('#colBackground')[0].value + '&';
+	path += 'colWE=' + $('#colWindowEdge')[0].value + '&';
+	path += 'streams=';
+	$('#inner').find('.stream').each(function() {
+		var channel = $(this).find('label')[0].innerHTML;
+		var top = $(this).position().top;
+		var left = $(this).position().left;
+		var height = $(this).height() - frameOffset;
+		var width = $(this).width() - frameOffset;
+		var z = $(this)[0].style.zIndex;
+		var pathPart = channel + '-' + top + '-' + left + '-' + height + '-' + width + '-' + z;
+		path += pathPart + ';';
+	});
+	console.log(path);
+	history.replaceState(null,null, window.location.pathname + path)	
 }

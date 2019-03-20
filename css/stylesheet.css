@@ -41,8 +41,6 @@ body {
 
 .frame {
 	position: fixed;
-	top: 50;
-	left: 10;
 	background-color: #4B367C;
 	transition: all 0s linear;
 }
