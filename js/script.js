@@ -51,6 +51,9 @@ function createFromParam(param) {
 				var height = streamsplitted[3];
 				var width = streamsplitted[4];
 				var z = streamsplitted[5];
+				if (z > topZ) {
+					topZ = z;
+				}
 				addStream(channelName,top,left,height,width,z);
 			}
 		});	
@@ -67,6 +70,9 @@ function createFromParam(param) {
 				var height = chatsplitted[3];
 				var width = chatsplitted[4];
 				var z = chatsplitted[5];
+				if (z > topZ) {
+					topZ = z;
+				}
 				addChat(channelName,top,left,height,width,z);
 			}
 		});	
