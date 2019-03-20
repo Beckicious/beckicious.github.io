@@ -86,15 +86,16 @@ function colWindowEdgeChange(event) {
 
 function addStreamFromButton() {
 	var channelName = $("#name").val();
-	var top = '50';
-	var left = '10';
+	var top = 50;
+	var left = 10;
 	var height = 400
 	var width = height * 1.64;
+	var topZ = topZ + 1;
 
-	addStream(channelName, top, left, height, width);
+	addStream(channelName, top, left, height, width, topZ);
 }
 
-function addStream(channelName, top, left, height, width) {
+function addStream(channelName, top, left, height, width, z) {
 	var frameheight = parseInt(height) + frameOffset;
 	var framewidth = parseInt(width) + frameOffset;
 	
@@ -105,7 +106,7 @@ function addStream(channelName, top, left, height, width) {
 			 class='frame stream' 
 			 style='height:` + frameheight + `; 
 				width:` + framewidth + `; 
-				z-index:` + topZ + `'
+				z-index:` + z + `'
 			 onresize='resize(this)' 
 			 onmouseenter='showFrame(this)'
 			 onmouseleave='hideFrame(this)'
@@ -142,22 +143,22 @@ function addStream(channelName, top, left, height, width) {
 	hideFrame("#field" + i + "d");
 	$("#field" + i + "d").css({top: top, left:left});
 	i = i+1;
-	topZ = topZ + 1;
 
 	setPath();
 }
 
 function addChatFromButton() {
 	var channelName = $("#name").val();
-	var top = '50px';
-	var left = '10px';
-	var height = 400
+	var top = 50;
+	var left = 10;
+	var height = 400;
 	var width = height * 0.7;
+	var topZ = topZ + 1;
 
-	addChat(channelName, top, left, height, width);
+	addChat(channelName, top, left, height, width, topZ);
 }
 
-function addChat(channelName, top, left, height, width) {
+function addChat(channelName, top, left, height, width, z) {
 	
 	var frameheight = height + frameOffset;
 	var framewidth = width + frameOffset;
@@ -169,7 +170,7 @@ function addChat(channelName, top, left, height, width) {
 			class='frame chat' 
 			style='height:` + frameheight + `; 
 				width:` + framewidth + `; 
-				z-index:` + topZ + `'
+				z-index:` + z + `'
 			onresize='resize(this)' 
 			onmouseenter='showFrame(this)'
 			onmouseleave='hideFrame(this)'
@@ -187,7 +188,6 @@ function addChat(channelName, top, left, height, width) {
 			<div class='iframeShield'></div>			
 		</div>
 	`);
-	//$("#inner").append("<div id='field" + i + "d' class='frame' style='height:" + frameheight + "; width:" + framewidth + "; z-index:" + topZ + "' onresize='resize(this)' onclick='putToFront(this)'>" + channelName + " chat<button class='end' style='left:" + buttonpos + ";' onclick='removeElement(this)'>✕</button><iframe class='twitchfield' src='https://twitch.tv/" + channelName + "/chat' frameborder='0' scrolling='no' height='" + height + "' width='" + width + "'></iframe></div>");
 	$("#field" + i + "d").draggable({
 		start: function () {
 			$(".iframeShield").css('visibility', 'visible')
@@ -208,7 +208,6 @@ function addChat(channelName, top, left, height, width) {
 	hideFrame("#field" + i + "d");
 	$("#field" + i + "d").css({top: top, left:left});
 	i = i+1;
-	topZ = topZ + 1;
 
 	setPath();
 }
