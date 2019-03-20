@@ -65,11 +65,11 @@ function createFromParam(param) {
 			if (chat) {
 				var chatsplitted = chat.split('-');
 				var channelName = chatsplitted[0];
-				var top = parseInt(streamsplitted[1]);
-				var left = parseInt(streamsplitted[2]);
-				var height = parseInt(streamsplitted[3]);
-				var width = parseInt(streamsplitted[4]);
-				var z = parseInt(streamsplitted[5]);
+				var top = parseInt(chatsplitted[1]);
+				var left = parseInt(chatsplitted[2]);
+				var height = parseInt(chatsplitted[3]);
+				var width = parseInt(chatsplitted[4]);
+				var z = parseInt(chatsplitted[5]);
 				if (z > topZ) {
 					topZ = z;
 				}
