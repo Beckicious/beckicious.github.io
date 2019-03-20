@@ -46,11 +46,11 @@ function createFromParam(param) {
 			if (stream) {
 				var streamsplitted = stream.split('-');
 				var channelName = streamsplitted[0];
-				var top = streamsplitted[1];
-				var left = streamsplitted[2];
-				var height = streamsplitted[3];
-				var width = streamsplitted[4];
-				var z = streamsplitted[5];
+				var top = parseInt(streamsplitted[1]);
+				var left = parseInt(streamsplitted[2]);
+				var height = parseInt(streamsplitted[3]);
+				var width = parseInt(streamsplitted[4]);
+				var z = parseInt(streamsplitted[5]);
 				if (z > topZ) {
 					topZ = z;
 				}
@@ -65,11 +65,11 @@ function createFromParam(param) {
 			if (chat) {
 				var chatsplitted = chat.split('-');
 				var channelName = chatsplitted[0];
-				var top = chatsplitted[1];
-				var left = chatsplitted[2];
-				var height = chatsplitted[3];
-				var width = chatsplitted[4];
-				var z = chatsplitted[5];
+				var top = parseInt(streamsplitted[1]);
+				var left = parseInt(streamsplitted[2]);
+				var height = parseInt(streamsplitted[3]);
+				var width = parseInt(streamsplitted[4]);
+				var z = parseInt(streamsplitted[5]);
 				if (z > topZ) {
 					topZ = z;
 				}
