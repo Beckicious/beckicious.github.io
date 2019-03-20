@@ -222,8 +222,8 @@ function addChat(channelName, top, left, height, width, z) {
 }
 
 function putToFront(ele) {
-	$(ele).css("z-index", topZ);
 	topZ = topZ + 1;
+	$(ele).css("z-index", topZ);
 
 	setPath();
 }
