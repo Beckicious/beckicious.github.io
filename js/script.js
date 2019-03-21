@@ -147,7 +147,8 @@ function addStream(channelName, top, left, height, width, z) {
 		stop: function () {
 			$(".iframeShield").css('visibility', 'hidden');
 			setPath();
-		}
+		},
+		handles:'n, e, s, w, ne, se, sw, nw'
 	});
 	$("#field" + i + "d").css({top: top, left:left});
 	hideFrame("#field" + i + "d");
