@@ -44,7 +44,7 @@ function createFromParam(param) {
 	if (streams) {
 		streams.split('_').forEach(function(stream) {
 			if (stream) {
-				var streamsplitted = stream.split('-');
+				var streamsplitted = stream.split(';');
 				var channelName = streamsplitted[0];
 				var top = parseInt(streamsplitted[1]);
 				var left = parseInt(streamsplitted[2]);
@@ -63,7 +63,7 @@ function createFromParam(param) {
 	if (chats) {
 		chats.split('_').forEach(function(chat) {
 			if (chat) {
-				var chatsplitted = chat.split('-');
+				var chatsplitted = chat.split(';');
 				var channelName = chatsplitted[0];
 				var top = parseInt(chatsplitted[1]);
 				var left = parseInt(chatsplitted[2]);
@@ -277,7 +277,7 @@ function setPath() {
 		var height = $(this).height() - frameOffset;
 		var width = $(this).width() - frameOffset;
 		var z = $(this)[0].style.zIndex;
-		var pathPart = channel + '-' + top + '-' + left + '-' + height + '-' + width + '-' + z + '_';
+		var pathPart = channel + ';' + top + ';' + left + ';' + height + ';' + width + ';' + z + '_';
 		path += pathPart;
 	});
 	path += '&chats=';
@@ -288,7 +288,7 @@ function setPath() {
 		var height = $(this).height() - frameOffset;
 		var width = $(this).width() - frameOffset;
 		var z = $(this)[0].style.zIndex;
-		var pathPart = channel + '-' + top + '-' + left + '-' + height + '-' + width + '-' + z + '_';
+		var pathPart = channel + ';' + top + ';' + left + ';' + height + ';' + width + ';' + z + '_';
 		path += pathPart;
 	});
 	window.history.replaceState(null,null, path);
