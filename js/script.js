@@ -121,7 +121,7 @@ function addStream(channelName, top, left, height, width, z) {
 			 <label class='labelChannelName'>` + channelName + `</label>
 			 <button class='end' style='left:` + buttonpos + `;' onclick='removeElement(this)'>✕</button>
 			 <iframe class='twitchfield' 
-				src='https://player.twitch.tv/?channel=` + channelName + `' 
+				src='https://player.twitch.tv/?channel=` + channelName + `&parent=beckicious.github.io'
 				frameborder='0' 
 				scrolling='no' 
 				allowfullscreen='true'
