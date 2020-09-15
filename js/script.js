@@ -188,7 +188,7 @@ function addChat(channelName, top, left, height, width, z) {
 			<label class='labelChannelName'>` + channelName + `</label>
 			<button class='end' style='left:` + buttonpos + `;' onclick='removeElement(this)'>✕</button>
 			<iframe class='twitchfield' 
-				src='https://www.twitch.tv/embed/` + channelName + `/chat?darkpopout'
+				src='https://www.twitch.tv/embed/` + channelName + `/chat?darkpopout&parent=beckicious.github.io'
 				id='` + channelName + `' 
 				frameborder='0' 
 				scrolling='no' 
